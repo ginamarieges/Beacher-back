@@ -6,7 +6,7 @@ import {
   generalError,
   notFoundError,
 } from "./middlewares/errorMiddlewares/errorMiddlewares.js";
-import { pingController } from "./controllers/pingController.js";
+import { pingController } from "./controllers/pingController/pingController.js";
 
 export const app = express();
 
@@ -24,7 +24,7 @@ app.use(morgan("dev"));
 
 app.disable("x-powered-by");
 
-app.use("/ping", pingController);
+app.use("/", pingController);
 
 app.use(notFoundError);
 

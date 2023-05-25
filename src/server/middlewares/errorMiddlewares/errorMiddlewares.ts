@@ -10,7 +10,7 @@ const debug = createDebug(
 
 export const generalError = (
   error: CustomError,
-  req: Request,
+  _req: Request,
   res: Response,
   _next: NextFunction
 ) => {
