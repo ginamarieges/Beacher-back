@@ -1,3 +1,3 @@
-export type PathsStructure = {
+export interface PathsStructure {
   pingController: string;
-};
+}
