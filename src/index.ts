@@ -1,6 +1,6 @@
 import "./loadEnvironment.js";
 import createDebug from "debug";
-import { app } from "./server/index.js";
+import { app } from "./server/app.js";
 
 const debug = createDebug("beaches-api:root");
 
