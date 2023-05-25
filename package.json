@@ -7,8 +7,8 @@
   "scripts": {
     "build": "tsc",
     "build:dev": "tsc --watch",
-    "start": "node dist",
-    "start:dev": "node -—watch dist",
+    "start": "node dist/",
+    "start:dev": "node --watch dist/",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -30,6 +30,9 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "@types/debug": "^4.1.8",
+    "debug": "^4.3.4",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "lint-staged": "^13.2.2",
     "morgan": "^1.10.0",
