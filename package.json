@@ -7,8 +7,8 @@
   "scripts": {
     "build": "tsc",
     "build:dev": "tsc --watch",
-    "start": "node dist",
-    "start:dev": "node -—watch dist",
+    "start": "node dist/",
+    "start:dev": "node --watch dist/",
     "prepare": "husky install"
   },
   "keywords": [],
