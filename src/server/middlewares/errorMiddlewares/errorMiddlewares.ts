@@ -5,7 +5,7 @@ import { type NextFunction, type Request, type Response } from "express";
 import CustomError from "../../../CustomError/CustomError.js";
 
 const debug = createDebug(
-  "beaches-api:server:middlewares:errorMiddlewares:errorMiddlewares.ts"
+  "beacher-api:server:middlewares:errorMiddlewares:errorMiddlewares.ts"
 );
 
 export const generalError = (
