@@ -1,8 +1,6 @@
-import { type NextFunction, type Request, type Response } from "express";
+import { type Request, type Response } from "express";
 
-const pingController = (req: Request, res: Response, _next: NextFunction) => {
+export const pingController = (req: Request, res: Response) => {
   const message = "Pong 🏓";
   res.status(200).json({ message });
 };
-
-export default pingController;
