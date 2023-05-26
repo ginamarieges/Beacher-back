@@ -19,7 +19,9 @@ jobs:
         run: npm run test:coverage
         env:
           MONGODB_CONNECTION: ${{secrets.MONGODB_CONNECTION}}
-          JWT_SECRET: ${{JWT_SECRET}}
+          JWT_SECRET: ${{secrets.JWT_SECRET}}
+          DEBUG: ${{secrets.DEBUG}}
+          ALLOWED_ORIGIN_DEV: ${{secrets.ALLOWED_ORIGIN_DEV}}
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.8
         env:
