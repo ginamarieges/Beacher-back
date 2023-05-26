@@ -1,4 +1,5 @@
 import { Schema, Types, model } from "mongoose";
+import User from "./User.js";
 const beachSchema = new Schema({
   name: {
     type: String,
@@ -14,10 +15,15 @@ const beachSchema = new Schema({
   },
   town: String,
   description: String,
-  services: [{ service: String, hasService: Boolean }],
+  services: {
+    lifeguard: Boolean,
+    umbrellas: Boolean,
+    dogs_allowed: Boolean,
+    showers: Boolean,
+  },
   user: {
     type: Types.ObjectId,
-    ref: "User",
+    ref: User,
   },
 });
 
