@@ -1,4 +1,5 @@
 import { type Request } from "express";
+import type * as core from "express-serve-static-core";
 import { type Types } from "mongoose";
 
 export interface UserCredentials {
@@ -36,4 +37,14 @@ export interface BeachStructure extends BeachStateStructure {
 }
 export interface BeachDocumentStructure extends BeachStateStructure {
   _id: Types.ObjectId;
+}
+
+export interface AuthRequest<
+  P = core.ParamsDictionary,
+  ResBody = any,
+  ReqBody = any,
+  ReqQuery = core.Query,
+  Locals extends Record<string, any> = Record<string, any>
+> extends Request<P, ResBody, ReqBody, ReqQuery, Locals> {
+  userId: string;
 }
