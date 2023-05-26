@@ -1,6 +1,7 @@
 import "../../../loadEnvironment.js";
 import createDebug from "debug";
 import chalk from "chalk";
+import { ValidationError } from "express-validation";
 import { type NextFunction, type Request, type Response } from "express";
 import type CustomError from "../../../CustomError/CustomError.js";
 import { responseErrorData } from "../../../utils/responseData/responseData.js";
@@ -15,6 +16,16 @@ export const generalError = (
   res: Response,
   _next: NextFunction
 ) => {
+  if (error instanceof ValidationError && error.details.body) {
+    const validationError = error.details.body
+      .map((joiError) => joiError.message)
+      .join(" & ")
+      .replaceAll("'", "");
+
+    (error as CustomError).publicMessage = validationError;
+    debug(chalk.red(validationError));
+  }
+
   debug(chalk.red(error.message));
 
   const statusCode = error.statusCode || 500;
