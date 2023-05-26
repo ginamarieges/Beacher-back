@@ -1,7 +1,7 @@
 import { type NextFunction, type Request, type Response } from "express";
 import { generalError, notFoundError } from "./errorMiddlewares.js";
 import CustomError from "../../../CustomError/CustomError.js";
-import { responseErrorData } from "../../../utils/responseData.js";
+import { responseErrorData } from "../../../utils/responseData/responseData.js";
 
 beforeEach(() => {
   jest.clearAllMocks();

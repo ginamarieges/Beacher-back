@@ -9,7 +9,7 @@ import {
 import { loginUser } from "./userControllers";
 import { Types } from "mongoose";
 import User from "../../../database/models/User";
-import { responseErrorData } from "../../../utils/responseData";
+import { responseErrorData } from "../../../utils/responseData/responseData";
 
 beforeEach(() => {
   jest.clearAllMocks();

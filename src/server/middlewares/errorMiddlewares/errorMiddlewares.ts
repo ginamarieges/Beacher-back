@@ -3,7 +3,7 @@ import createDebug from "debug";
 import chalk from "chalk";
 import { type NextFunction, type Request, type Response } from "express";
 import type CustomError from "../../../CustomError/CustomError.js";
-import { responseErrorData } from "../../../utils/responseData.js";
+import { responseErrorData } from "../../../utils/responseData/responseData.js";
 
 const debug = createDebug(
   "beacher-api:server:middlewares:errorMiddlewares:errorMiddlewares.ts"
