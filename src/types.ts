@@ -1,9 +1,5 @@
 import { type Request } from "express";
 
-export interface PathsStructure {
-  pingController: string;
-}
-
 export interface UserCredentials {
   username: string;
   password: string;
