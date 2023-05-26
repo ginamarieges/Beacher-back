@@ -3,7 +3,7 @@ import { type NextFunction, type Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import { type UserCredentialsRequest } from "../../../types";
-import User from "../../../database/models/User";
+import User from "../../../database/models/User.js";
 import { responseErrorData } from "../../../utils/responseData/responseData.js";
 
 export const loginUser = async (
@@ -16,7 +16,7 @@ export const loginUser = async (
   try {
     const user = await User.findOne({ username }).exec();
 
-    if (!user || !(await bcrypt.compare(user.password, password))) {
+    if (!user || !(await bcrypt.compare(password, user.password))) {
       const customError = responseErrorData.wrongCredentials;
       throw customError;
     }
