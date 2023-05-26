@@ -6,4 +6,5 @@ export const responseErrorData: ErrorStructure = {
   endpointNotFound: new CustomError("Endpoint not found", 404),
   serverError: new Error("Server error"),
   tokenNotFound: new CustomError("Token not found", 401),
+  invalidToken: new CustomError("Invalid token", 401),
 };
