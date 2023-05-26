@@ -18,10 +18,8 @@ jobs:
       - name: Coverage
         run: npm run test:coverage
         env:
-          DEBUG: ${{beacher-api:*}}
-          MONGODB_CONNECTION: ${{mongodb+srv://ginamarieges:bootcamp@cluster0.rov9pxv.mongodb.net/beacher}}
-          JWT_SECRET: ${{apixicnocalescalasicascalduli}}
-          ALLOWED_ORIGIN_DEV: ${{http://localhost:5173}}
+          MONGODB_CONNECTION: ${{secrets.MONGODB_CONNECTION}}
+          JWT_SECRET: ${{JWT_SECRET}}
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.8
         env:
