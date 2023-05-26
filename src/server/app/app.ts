@@ -9,6 +9,7 @@ import {
 import { pingController } from "../controllers/pingController/pingController.js";
 import paths from "../paths/paths.js";
 import userRouter from "../routers/users/userRouter.js";
+import { getBeaches } from "../controllers/beachesControllers/beachesControllers.js";
 
 export const app = express();
 
@@ -29,6 +30,8 @@ app.disable("x-powered-by");
 app.get(paths.ping, pingController);
 
 app.use(paths.user, userRouter);
+
+app.get("/beaches", getBeaches);
 
 app.use(notFoundError);
 
