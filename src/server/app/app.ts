@@ -28,7 +28,7 @@ app.disable("x-powered-by");
 
 app.get(paths.ping, pingController);
 
-app.use(paths.users, userRouter);
+app.use(paths.user, userRouter);
 
 app.use(notFoundError);
 
