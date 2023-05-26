@@ -18,7 +18,10 @@ jobs:
       - name: Coverage
         run: npm run test:coverage
         env:
-          VITE_API_URL: ${{secrets.VITE_API_URL}}
+          DEBUG: ${{beacher-api:*}}
+          MONGODB_CONNECTION: ${{mongodb+srv://ginamarieges:bootcamp@cluster0.rov9pxv.mongodb.net/beacher}}
+          JWT_SECRET: ${{apixicnocalescalasicascalduli}}
+          ALLOWED_ORIGIN_DEV: ${{http://localhost:5173}}
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.8
         env:
