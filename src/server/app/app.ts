@@ -1,13 +1,13 @@
-import "../loadEnvironment.js";
+import "../../loadEnvironment.js";
 import express from "express";
 import morgan from "morgan";
 import cors from "cors";
 import {
   generalError,
   notFoundError,
-} from "./middlewares/errorMiddlewares/errorMiddlewares.js";
-import { pingController } from "./controllers/pingController/pingController.js";
-import paths from "../paths.js";
+} from "../middlewares/errorMiddlewares/errorMiddlewares.js";
+import { pingController } from "../controllers/pingController/pingController.js";
+import paths from "../paths/paths.js";
 
 export const app = express();
 
@@ -25,7 +25,7 @@ app.use(morgan("dev"));
 
 app.disable("x-powered-by");
 
-app.use(paths.pingController, pingController);
+app.get(paths.ping, pingController);
 
 app.use(notFoundError);
 

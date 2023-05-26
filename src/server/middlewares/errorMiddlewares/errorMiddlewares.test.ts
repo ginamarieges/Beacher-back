@@ -1,6 +1,7 @@
 import { type NextFunction, type Request, type Response } from "express";
 import { generalError, notFoundError } from "./errorMiddlewares.js";
 import CustomError from "../../../CustomError/CustomError.js";
+import { responseErrorData } from "../../../utils/responseData.js";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -78,7 +79,7 @@ describe("Given a notFoundError middleware,", () => {
       const req = {};
       const res = {};
       const next = jest.fn();
-      const expectedError = new CustomError("Endpoint not found", 404);
+      const expectedError = responseErrorData.endpointNotFound;
 
       notFoundError(req as Request, res as Response, next as NextFunction);
 

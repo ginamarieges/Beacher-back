@@ -1,6 +1,6 @@
 import "./loadEnvironment.js";
 import createDebug from "debug";
-import { app } from "./server/app.js";
+import { app } from "./server/app/app.js";
 import chalk from "chalk";
 import connectToDatabase from "./database/connectToDatabase.js";
 

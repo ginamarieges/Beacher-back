@@ -2,7 +2,8 @@ import "../../../loadEnvironment.js";
 import createDebug from "debug";
 import chalk from "chalk";
 import { type NextFunction, type Request, type Response } from "express";
-import CustomError from "../../../CustomError/CustomError.js";
+import type CustomError from "../../../CustomError/CustomError.js";
+import { responseErrorData } from "../../../utils/responseData.js";
 
 const debug = createDebug(
   "beacher-api:server:middlewares:errorMiddlewares:errorMiddlewares.ts"
@@ -27,6 +28,6 @@ export const notFoundError = (
   res: Response,
   next: NextFunction
 ) => {
-  const customError = new CustomError("Endpoint not found", 404);
+  const customError = responseErrorData.endpointNotFound;
   next(customError);
 };
