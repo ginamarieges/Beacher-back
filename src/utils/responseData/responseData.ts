@@ -1,4 +1,4 @@
-import CustomError from "../CustomError/CustomError.js";
+import CustomError from "../../CustomError/CustomError.js";
 import { type ErrorStructure } from "./types.js";
 
 export const responseErrorData: ErrorStructure = {

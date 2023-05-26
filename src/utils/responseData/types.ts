@@ -1,4 +1,4 @@
-import type CustomError from "../CustomError/CustomError.js";
+import type CustomError from "../../CustomError/CustomError.js";
 
 export interface ErrorStructure {
   endpointNotFound: CustomError;

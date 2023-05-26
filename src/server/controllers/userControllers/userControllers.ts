@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 import jwt, { type JwtPayload } from "jsonwebtoken";
 import { type UserCredentialsRequest } from "../../../types";
 import User from "../../../database/models/User";
-import { responseErrorData } from "../../../utils/responseData.js";
+import { responseErrorData } from "../../../utils/responseData/responseData.js";
 
 export const loginUser = async (
   req: UserCredentialsRequest,
