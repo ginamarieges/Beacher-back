@@ -1,6 +1,6 @@
 export interface PathsStructure {
-  ping: string;
+  root: string;
   user: string;
   login: string;
-  getBeaches: string;
+  beaches: string;
 }

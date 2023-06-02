@@ -1,10 +1,10 @@
 import { type PathsStructure } from "./types";
 
 const paths: PathsStructure = {
-  ping: "/",
+  root: "/",
   user: "/user",
   login: "/login",
-  getBeaches: "/beaches",
+  beaches: "/beaches",
 };
 
 export default paths;
