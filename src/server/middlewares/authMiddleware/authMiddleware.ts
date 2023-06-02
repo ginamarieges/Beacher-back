@@ -1,11 +1,11 @@
 import { type NextFunction, type Response } from "express";
 import jwt from "jsonwebtoken";
-import { responseErrorData } from "../../../utils/responseData/responseData";
+import { responseErrorData } from "../../../utils/responseData/responseData.js";
 import { type AuthRequest } from "../../../types";
 
 const auth = (req: AuthRequest, res: Response, next: NextFunction) => {
-  const authorizationHeader = req.header("Authorization");
   try {
+    const authorizationHeader = req.header("Authorization");
     if (!authorizationHeader?.includes("Bearer")) {
       const customError = responseErrorData.tokenNotFound;
       throw customError;
