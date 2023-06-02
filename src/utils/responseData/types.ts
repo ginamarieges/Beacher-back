@@ -4,4 +4,6 @@ export interface ErrorStructure {
   endpointNotFound: CustomError;
   wrongCredentials: CustomError;
   serverError: Error;
+  tokenNotFound: CustomError;
+  invalidToken: CustomError;
 }

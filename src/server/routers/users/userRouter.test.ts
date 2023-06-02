@@ -73,9 +73,9 @@ describe("Given an endpoint POST '/user/login'", () => {
   });
 
   describe("When it receives a request without a password", () => {
-    test("Then it should respond with a response with status 400 and message Validation Failed", async () => {
+    test("Then it should respond with a response with status 400 and message 'password is required'", async () => {
       const expectedStatus = 400;
-      const expectedMessage = "Validation Failed";
+      const expectedMessage = "password is required";
 
       const response = await request(app)
         .post(`${paths.user}${paths.login}`)

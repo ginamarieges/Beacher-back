@@ -10,10 +10,14 @@ import { pingController } from "../controllers/pingController/pingController.js"
 import paths from "../paths/paths.js";
 import userRouter from "../routers/users/userRouter.js";
 import { getBeaches } from "../controllers/beachesControllers/beachesControllers.js";
+import auth from "../middlewares/authMiddleware/authMiddleware.js";
 
 export const app = express();
 
-const allowedOrigins = [process.env.ALLOWED_ORIGIN_DEV!];
+const allowedOrigins = [
+  process.env.ALLOWED_ORIGIN_DEV!,
+  process.env.ALLOWED_ORIGIN_PROD!,
+];
 
 const options: cors.CorsOptions = {
   origin: allowedOrigins,
@@ -31,7 +35,7 @@ app.get(paths.ping, pingController);
 
 app.use(paths.user, userRouter);
 
-app.get("/beaches", getBeaches);
+app.get("/beaches", auth, getBeaches);
 
 app.use(notFoundError);
 
