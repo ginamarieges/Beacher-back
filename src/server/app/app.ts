@@ -9,8 +9,8 @@ import {
 import { pingController } from "../controllers/pingController/pingController.js";
 import paths from "../paths/paths.js";
 import userRouter from "../routers/users/userRouter.js";
-import { getBeaches } from "../controllers/beachesControllers/beachesControllers.js";
 import auth from "../middlewares/authMiddleware/authMiddleware.js";
+import beachesRouter from "../routers/beaches/beachesRouter.js";
 
 export const app = express();
 
@@ -31,11 +31,11 @@ app.use(morgan("dev"));
 
 app.disable("x-powered-by");
 
-app.get(paths.ping, pingController);
+app.get(paths.root, pingController);
 
 app.use(paths.user, userRouter);
 
-app.get("/beaches", auth, getBeaches);
+app.use(paths.beaches, auth, beachesRouter);
 
 app.use(notFoundError);
 

@@ -1,8 +1,8 @@
 import { Factory } from "fishery";
 import { faker } from "@faker-js/faker";
-import { type BeachStateStructure } from "../../types";
+import { type BeachStructure } from "../../types";
 
-const beachesFactory = Factory.define<BeachStateStructure>(() => ({
+const beachesFactory = Factory.define<BeachStructure>(() => ({
   name: faker.commerce.productName(),
   description: faker.commerce.productDescription(),
   image: faker.image.dataUri(),
@@ -19,6 +19,7 @@ const beachesFactory = Factory.define<BeachStateStructure>(() => ({
   },
   users: faker.string.alphanumeric(),
   addServices: faker.word.adjective(),
+  id: faker.string.alphanumeric(),
 }));
 
 export const getBeachesMock = (number: number) =>
