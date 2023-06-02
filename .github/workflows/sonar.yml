@@ -22,6 +22,7 @@ jobs:
           JWT_SECRET: ${{secrets.JWT_SECRET}}
           DEBUG: ${{secrets.DEBUG}}
           ALLOWED_ORIGIN_DEV: ${{secrets.ALLOWED_ORIGIN_DEV}}
+          ALLOWED_ORIGIN_PROD: ${{secrets.ALLOWED_ORIGIN_PROD}}
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v1.8
         env:

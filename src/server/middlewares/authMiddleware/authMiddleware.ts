@@ -1,3 +1,4 @@
+import "../../../loadEnvironment.js";
 import { type NextFunction, type Response } from "express";
 import jwt from "jsonwebtoken";
 import { responseErrorData } from "../../../utils/responseData/responseData.js";
