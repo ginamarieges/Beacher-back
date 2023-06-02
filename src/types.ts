@@ -25,10 +25,14 @@ export interface BeachStateStructure {
   town: string;
   services: {
     showers: boolean;
-    lifeguard: boolean;
+    baywatch: boolean;
     umbrellas: boolean;
     dogsAllowed: boolean;
+    restaurant: boolean;
+    familyBeach: boolean;
+    secretBeach: boolean;
   };
+  addServices?: string;
   users: string;
 }
 

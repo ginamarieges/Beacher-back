@@ -16,11 +16,15 @@ const beachSchema = new Schema({
   town: String,
   description: String,
   services: {
-    lifeguard: Boolean,
+    baywatch: Boolean,
     umbrellas: Boolean,
     dogs_allowed: Boolean,
     showers: Boolean,
+    restaurant: Boolean,
+    familyBeach: Boolean,
+    secretBeach: Boolean,
   },
+  addServices: String,
   user: {
     type: Types.ObjectId,
     ref: User,
