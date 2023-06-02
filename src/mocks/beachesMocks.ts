@@ -1,5 +1,6 @@
 import { Types } from "mongoose";
-import { type BeachDocumentStructure } from "../types";
+import { type BeachStructure, type BeachDocumentStructure } from "../types";
+import { getBeachesMock } from "./factories/beachfactories";
 
 export const mockBeaches: BeachDocumentStructure[] = [
   {
@@ -41,3 +42,5 @@ export const mockBeaches: BeachDocumentStructure[] = [
     _id: new Types.ObjectId(),
   },
 ];
+
+export const mockedBeaches: BeachStructure[] = getBeachesMock(4);
