@@ -4,11 +4,15 @@ import { type BeachDocumentStructure } from "../types";
 export const mockBeaches: BeachDocumentStructure[] = [
   {
     services: {
-      lifeguard: true,
+      baywatch: true,
       umbrellas: true,
       dogsAllowed: false,
       showers: true,
+      familyBeach: false,
+      restaurant: true,
+      secretBeach: true,
     },
+    addServices: "It's nude",
     name: "Tossa de Mar Beach",
     image: "https://example.com/tossa_de_mar.jpg",
     description:
@@ -20,10 +24,13 @@ export const mockBeaches: BeachDocumentStructure[] = [
   },
   {
     services: {
-      lifeguard: false,
+      baywatch: false,
       umbrellas: true,
       dogsAllowed: true,
       showers: true,
+      familyBeach: true,
+      restaurant: true,
+      secretBeach: false,
     },
     name: "Cala Perduda",
     image: "https://what.jpg",
