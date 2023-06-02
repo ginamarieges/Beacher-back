@@ -20,16 +20,16 @@ export const generalError = (
     const validationError = error.details.body
       .map((joiError) => joiError.message)
       .join(" & ")
-      .replaceAll("'", "");
+      .replaceAll('"', "");
 
     (error as CustomError).publicMessage = validationError;
     debug(chalk.red(validationError));
   }
 
-  debug(chalk.red(error.message));
+  debug(chalk.green(error.message));
 
   const statusCode = error.statusCode || 500;
-  const message = error.statusCode ? error.message : "General error";
+  const message = error.statusCode ? error.publicMessage : "General error";
 
   res.status(statusCode).json({ message });
 };
