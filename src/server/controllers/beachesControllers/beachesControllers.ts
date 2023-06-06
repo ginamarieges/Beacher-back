@@ -37,9 +37,7 @@ export const deleteBeach = async (
       throw new CustomError("Beach not found", 404);
     }
 
-    res
-      .status(200)
-      .json({ message: `Beach ${beachToDelete._id.toString()} deleted` });
+    res.status(200).json({ message: `Beach deleted` });
   } catch (error: unknown) {
     next(error);
   }
