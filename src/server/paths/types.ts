@@ -3,4 +3,5 @@ export interface PathsStructure {
   user: string;
   login: string;
   beaches: string;
+  delete: string;
 }

@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Platja de la Barceloneta",
+    "image": "https://cdn.discordapp.com/attachments/1100447017337094238/1115610875492048896/barceloneta.webp",
+    "region": "Barcelona",
+    "town": "Barcelona",
+    "description": "A popular urban beach in Barcelona with a vibrant atmosphere.",
+    "services": {
+      "baywatch": true,
+      "umbrellas": true,
+      "dogs_allowed": false,
+      "showers": true,
+      "restaurant": true,
+      "familyBeach": true,
+      "secretBeach": false
+    },
+    "addServices": "Beach volleyball courts available.",
+    "user": "6470de574da09294395a6eaa"
+  },
+  {
+    "name": "Platja de Tossa",
+    "image": "https://cdn.discordapp.com/attachments/1100447017337094238/1115612626198745188/tossa.webp",
+    "region": "Costa Brava",
+    "town": "Tossa de Mar",
+    "description": "A picturesque beach in Tossa de Mar with crystal-clear waters.",
+    "services": {
+      "baywatch": true,
+      "umbrellas": true,
+      "dogs_allowed": true,
+      "showers": true,
+      "restaurant": true,
+      "familyBeach": true,
+      "secretBeach": false
+    },
+    "addServices": "Boat rental services available.",
+    "user": "646f981a0056a93b408c5050"
+  },
+  {
+    "name": "Platja de la Nova Icaria",
+    "image": "https://cdn.discordapp.com/attachments/1100447017337094238/1115612093694103614/nova_icaria_platja.webp",
+    "region": "Barcelona",
+    "town": "Barcelona",
+    "description": "A peaceful beach in Barcelona, perfect for relaxation.",
+    "services": {
+      "baywatch": true,
+      "umbrellas": true,
+      "dogs_allowed": false,
+      "showers": true,
+      "restaurant": true,
+      "familyBeach": true,
+      "secretBeach": false
+    },
+    "addServices": "Beachside bars available.",
+    "user": "6470de574da09294395a6eaa"
+  },
+  {
+    "name": "Platja d'Aro",
+    "image": "https://cdn.discordapp.com/attachments/1100447017337094238/1115612377627500645/platje-aro.webp",
+    "region": "Costa Brava",
+    "town": "Platja d'Aro",
+    "description": "A lively beach with a wide range of water sports activities.",
+    "services": {
+      "baywatch": true,
+      "umbrellas": true,
+      "dogs_allowed": true,
+      "showers": true,
+      "restaurant": true,
+      "familyBeach": true,
+      "secretBeach": false
+    },
+    "addServices": "Jet ski rental services available.",
+    "user": "646f981a0056a93b408c5050"
+  },
+  {
+    "name": "Platja del Bogatell",
+    "image": "https://cdn.discordapp.com/attachments/1100447017337094238/1115611361901281350/bogatell_platja.webp",
+    "region": "Barcelona",
+    "town": "Barcelona",
+    "description": "A spacious and clean beach in Barcelona, ideal for long walks.",
+    "services": {
+      "baywatch": true,
+      "umbrellas": true,
+      "dogs_allowed": false,
+      "showers": true,
+      "restaurant": true,
+      "familyBeach": true,
+      "secretBeach": false
+    },
+    "addServices": "Beachside bike rental available.",
+    "user": "6470de574da09294395a6eaa"
+  }
+]
