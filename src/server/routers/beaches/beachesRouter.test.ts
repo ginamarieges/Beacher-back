@@ -1,3 +1,4 @@
+import "../../../loadEnvironment.js";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import request, { type Response } from "supertest";
 import connectToDatabase from "../../../database/connectToDatabase.js";
@@ -5,7 +6,7 @@ import mongoose from "mongoose";
 import Beach from "../../../database/models/Beach.js";
 import User from "../../../database/models/User.js";
 import { mockedUserHashed, tokenMock } from "../../../mocks/userMocks.js";
-import { mockedBeaches } from "../../../mocks/beachesMocks.js";
+import { beaches, mockedBeaches } from "../../../mocks/beachesMocks.js";
 import paths from "../../paths/paths.js";
 import { app } from "../../app/app.js";
 
@@ -23,6 +24,7 @@ afterAll(async () => {
 
 afterEach(async () => {
   await User.deleteMany();
+  await Beach.deleteMany();
 });
 
 describe("Given a GET/beaches endpoint", () => {
@@ -49,6 +51,42 @@ describe("Given a GET/beaches endpoint", () => {
       const expectedMessage = "Token not found";
       const response: Response = await request(app)
         .get(paths.beaches)
+        .expect(expectedStatus);
+
+      expect(response.body.message).toBe(expectedMessage);
+    });
+  });
+});
+
+describe("Given a DELETE/beaches/delete/:id endpoint", () => {
+  beforeEach(async () => {
+    await User.create(mockedUserHashed);
+    await Beach.create(beaches);
+  });
+  describe("When it receives a request with an id of an existing beach", () => {
+    test("Then it should respond with status 200 and a messege 'Beach deleted'", async () => {
+      const expectedStatus = 200;
+      const expectedMessage = "Beach deleted";
+      const beachId = "647c95dd41a0463b7c0461a1";
+
+      const response = await request(app)
+        .delete(`/beaches/delete/${beachId}`)
+        .set("Authorization", `Bearer ${tokenMock}`)
+        .expect(expectedStatus);
+
+      expect(response.body.message).toBe(expectedMessage);
+    });
+  });
+
+  describe("When it receives a request with an invalid id", () => {
+    test("Then it should respond with the error 404 and the message Beach not found", async () => {
+      const expectedMessage = "Beach not found";
+      const expectedStatus = 404;
+      const id = "5fbd2a81f4b3c96d54d32c9a";
+
+      const response = await request(app)
+        .delete(`/beaches/delete/${id}`)
+        .set("Authorization", `Bearer ${tokenMock}`)
         .expect(expectedStatus);
 
       expect(response.body.message).toBe(expectedMessage);
