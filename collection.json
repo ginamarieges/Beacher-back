@@ -1,0 +1,86 @@
+{
+  "info": {
+    "_postman_id": "dbff9830-d112-43d0-b36a-f5574b8f76a2",
+    "name": "gina-marieges-proyecto-final",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27030743"
+  },
+  "item": [
+    {
+      "name": "/",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": [""]
+        },
+        "description": "Request al endpoint GET \"/\" debe dar una response con mensaje Pong"
+      },
+      "response": []
+    },
+    {
+      "name": "/user/login",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmOTgxYTAwNTZhOTNiNDA4YzUwNTAiLCJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2ODU3MDQ2MzIsImV4cCI6MTY5MjYxNjYzMn0.M6X8A4g8NaQlYygYAJ7QTqoiAFrxkE5Q9vBzbIwT5ck",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"username\": \"admin\",\n\"password\": \"admin\"}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4000/user/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["user", "login"]
+        },
+        "description": "Con las user credentials en el body de la request debe responder con un token en el body de la response y un status code 200"
+      },
+      "response": []
+    },
+    {
+      "name": "/beaches",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmOTgxYTAwNTZhOTNiNDA4YzUwNTAiLCJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2ODU3MjEwODEsImV4cCI6MTY5MjYzMzA4MX0.-4XjhZ8yW6wzezf1SWXNeVA5GW-srwbJbCR29CBXsGc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/beaches/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["beaches", ""]
+        }
+      },
+      "response": []
+    }
+  ]
+}
