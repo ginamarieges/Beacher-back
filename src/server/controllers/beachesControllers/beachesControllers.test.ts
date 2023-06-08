@@ -5,10 +5,7 @@ import { mockBeaches } from "../../../mocks/beachesMocks.js";
 import { responseErrorData } from "../../../utils/responseData/responseData.js";
 import { type CustomRequest, type AuthRequest } from "../../../types.js";
 import CustomError from "../../../CustomError/CustomError.js";
-import {
-  getRequestBeachMock,
-  getResponseBeachMock,
-} from "../../../mocks/factories/beachfactories.js";
+import { getResponseBeachMock } from "../../../mocks/factories/beachfactories.js";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -131,7 +128,7 @@ describe("Given a addBeach controller", () => {
     json: jest.fn(),
   };
   const next = jest.fn();
-  const beachToAdd = getRequestBeachMock();
+  const beachToAdd = getResponseBeachMock();
   const beachAdded = getResponseBeachMock();
   const userId = "646fc50910c8e8c5b17d54a7";
 

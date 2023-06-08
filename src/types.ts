@@ -37,7 +37,7 @@ export interface BeachStateStructure {
 }
 
 export interface BeachStructure extends BeachStateStructure {
-  id: string;
+  id?: string;
 }
 export interface BeachDocumentStructure extends BeachStateStructure {
   _id: Types.ObjectId;
