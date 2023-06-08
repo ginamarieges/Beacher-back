@@ -93,3 +93,38 @@ describe("Given a DELETE/beaches/delete/:id endpoint", () => {
     });
   });
 });
+
+describe("Given a POST/beaches endpoint", () => {
+  beforeEach(async () => {
+    await User.create(mockedUserHashed);
+  });
+  describe("When it receives a request with a beach data", () => {
+    test("Then it should respond with status 201 and the new beach created", async () => {
+      const expectedStatus = 201;
+      const beachMocked = mockedBeaches[1];
+      const expectedProperty = "newBeach";
+
+      const response = await request(app)
+        .post(paths.beaches)
+        .set("Authorization", `Bearer ${tokenMock}`)
+        .send(beachMocked)
+        .expect(expectedStatus);
+
+      expect(response.body).toHaveProperty(expectedProperty);
+    });
+  });
+
+  describe("When it receives an invalid beach data", () => {
+    test("Then it should respond with the error 400 and the message 'Error adding your beach'", async () => {
+      const expectedStatus = 500;
+      const expectedMessage = "General error";
+
+      const response = await request(app)
+        .post(paths.beaches)
+        .set("Authorization", `Bearer ${tokenMock}`)
+        .expect(expectedStatus);
+
+      expect(response.body.message).toBe(expectedMessage);
+    });
+  });
+});
