@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+  addBeach,
   deleteBeach,
   getBeaches,
 } from "../../controllers/beachesControllers/beachesControllers.js";
@@ -10,5 +11,7 @@ const beachesRouter = Router();
 beachesRouter.get("/", getBeaches);
 
 beachesRouter.delete(paths.delete, deleteBeach);
+
+beachesRouter.post("/", addBeach);
 
 export default beachesRouter;

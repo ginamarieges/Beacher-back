@@ -24,3 +24,6 @@ const beachesFactory = Factory.define<BeachStructure>(() => ({
 
 export const getBeachesMock = (number: number) =>
   beachesFactory.buildList(number);
+
+export const getResponseBeachMock = (data?: BeachStructure) =>
+  beachesFactory.build(data);
