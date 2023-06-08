@@ -33,7 +33,7 @@ export interface BeachStateStructure {
     secretBeach: boolean;
   };
   addServices?: string;
-  users: string;
+  users?: string;
 }
 
 export interface BeachStructure extends BeachStateStructure {
@@ -50,5 +50,10 @@ export interface AuthRequest<
   ReqQuery = core.Query,
   Locals extends Record<string, any> = Record<string, any>
 > extends Request<P, ResBody, ReqBody, ReqQuery, Locals> {
+  userId: string;
+}
+
+export interface CustomRequest extends Request {
+  body: BeachStateStructure;
   userId: string;
 }

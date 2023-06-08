@@ -3,7 +3,8 @@ import createDebug from "debug";
 import { type NextFunction, type Request, type Response } from "express";
 import Beach from "../../../database/models/Beach.js";
 import { responseErrorData } from "../../../utils/responseData/responseData.js";
-import CustomError from "../../../CustomError/CustomError.js";
+import { type CustomRequest } from "../../../types.js";
+import { Types } from "mongoose";
 
 const debug = createDebug(
   "beacher-api:server:controllers:beachesControllers:beachesControllers.js"
@@ -34,10 +35,33 @@ export const deleteBeach = async (
     const beachToDelete = await Beach.findByIdAndDelete(id).exec();
 
     if (!beachToDelete) {
-      throw new CustomError("Beach not found", 404);
+      throw responseErrorData.beachNotFound;
     }
 
     res.status(200).json({ message: `Beach deleted` });
+  } catch (error: unknown) {
+    next(error);
+  }
+};
+
+export const addBeach = async (
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const { userId, body } = req;
+
+  try {
+    const newBeach = await Beach.create({
+      ...body,
+      user: new Types.ObjectId(userId),
+    });
+
+    if (!newBeach) {
+      throw responseErrorData.errorAddBeach;
+    }
+
+    res.status(201).json({ newBeach });
   } catch (error: unknown) {
     next(error);
   }

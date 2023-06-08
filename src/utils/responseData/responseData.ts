@@ -7,4 +7,6 @@ export const responseErrorData: ErrorStructure = {
   serverError: new Error("Server error"),
   tokenNotFound: new CustomError("Token not found", 401),
   invalidToken: new CustomError("Invalid token", 401),
+  beachNotFound: new CustomError("Beach not found", 404),
+  errorAddBeach: new CustomError("Error adding your beach", 400),
 };

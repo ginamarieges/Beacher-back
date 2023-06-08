@@ -18,7 +18,7 @@ const beachSchema = new Schema({
   services: {
     baywatch: Boolean,
     umbrellas: Boolean,
-    dogs_allowed: Boolean,
+    dogsAllowed: Boolean,
     showers: Boolean,
     restaurant: Boolean,
     familyBeach: Boolean,
