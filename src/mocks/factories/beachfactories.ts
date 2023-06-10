@@ -1,6 +1,7 @@
 import { Factory } from "fishery";
 import { faker } from "@faker-js/faker";
 import { type BeachStructure } from "../../types";
+import { Types } from "mongoose";
 
 const beachesFactory = Factory.define<BeachStructure>(() => ({
   name: faker.commerce.productName(),
@@ -17,7 +18,7 @@ const beachesFactory = Factory.define<BeachStructure>(() => ({
     showers: faker.datatype.boolean(),
     umbrellas: faker.datatype.boolean(),
   },
-  user: faker.string.alphanumeric(),
+  user: new Types.ObjectId().toString(),
   addServices: faker.word.adjective(),
   id: faker.string.alphanumeric(),
 }));
