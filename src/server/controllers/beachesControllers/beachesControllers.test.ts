@@ -31,6 +31,9 @@ describe("Given a getBeaches controller", () => {
         }),
       }),
     });
+    Beach.where = jest.fn().mockReturnValue({
+      countDocuments: jest.fn().mockResolvedValue(mockBeaches.length),
+    });
     test("Then it should call the method status 200", async () => {
       const expectedStatus = 200;
 
@@ -49,7 +52,10 @@ describe("Given a getBeaches controller", () => {
     });
 
     test("Then it should call the method json with a list of two beaches", async () => {
-      const expectedBeaches = { beaches: mockBeaches };
+      const expectedBeaches = {
+        beaches: mockBeaches,
+        length: mockBeaches.length,
+      };
 
       await getBeaches(
         req as Request<

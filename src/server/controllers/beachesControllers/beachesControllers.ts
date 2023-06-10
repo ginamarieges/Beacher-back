@@ -26,7 +26,9 @@ export const getBeaches = async (
 
     const beaches = await Beach.find().skip(skip).limit(limit).exec();
 
-    res.status(200).json({ beaches });
+    const length = await Beach.where({}).countDocuments();
+
+    res.status(200).json({ beaches, length });
   } catch (error) {
     const customError = responseErrorData.serverError;
     debug(error.message);
