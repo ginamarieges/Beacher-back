@@ -33,7 +33,7 @@ export interface BeachStateStructure {
     secretBeach: boolean;
   };
   addServices?: string;
-  users?: string;
+  user?: string;
 }
 
 export interface BeachStructure extends BeachStateStructure {

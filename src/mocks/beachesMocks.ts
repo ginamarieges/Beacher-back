@@ -20,7 +20,7 @@ export const mockBeaches: BeachDocumentStructure[] = [
       "Tossa de Mar Beach is a stunning crescent-shaped beach nestled in the town of Tossa de Mar. It is renowned for its medieval castle overlooking the shoreline.",
     region: "Costa Brava",
     town: "Tossa de Mar",
-    users: "6470de574da09294395a6eaa",
+    user: "6470de574da09294395a6eaa",
     _id: new Types.ObjectId(),
   },
   {
@@ -38,7 +38,7 @@ export const mockBeaches: BeachDocumentStructure[] = [
     description: "Playa inventada.",
     region: "Costa Brava",
     town: "Tossa de Mar",
-    users: "w847y5ern93oxmdsgkigfdfghjh",
+    user: "w847y5ern93oxmdsgkigfdfghjh",
     _id: new Types.ObjectId(),
   },
 ];
@@ -63,7 +63,7 @@ export const beaches: BeachDocumentStructure[] = [
       "Tossa de Mar Beach is a stunning crescent-shaped beach nestled in the town of Tossa de Mar. It is renowned for its medieval castle overlooking the shoreline.",
     region: "Costa Brava",
     town: "Tossa de Mar",
-    users: "6470de574da09294395a6eaa",
+    user: "6470de574da09294395a6eaa",
     _id: new Types.ObjectId("647c95dd41a0463b7c0461a1"),
   },
   {
@@ -81,7 +81,7 @@ export const beaches: BeachDocumentStructure[] = [
     description: "Playa inventada.",
     region: "Costa Brava",
     town: "Tossa de Mar",
-    users: "w847y5ern93oxmdsgkigfdfghjh",
+    user: "w847y5ern93oxmdsgkigfdfghjh",
     _id: new Types.ObjectId("60b8d56c8f7cf53f99e1c437"),
   },
 ];
