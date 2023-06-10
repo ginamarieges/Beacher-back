@@ -5,7 +5,7 @@ const addBeachSchema = {
   body: Joi.object<BeachStateStructure>({
     name: Joi.string().required(),
     image: Joi.string().required(),
-    description: Joi.string(),
+    description: Joi.string().allow(""),
     region: Joi.string().required(),
     town: Joi.string().required(),
     services: {
@@ -17,7 +17,7 @@ const addBeachSchema = {
       familyBeach: Joi.boolean(),
       secretBeach: Joi.boolean(),
     },
-    addServices: Joi.string(),
+    addServices: Joi.string().allow(""),
   }),
 };
 

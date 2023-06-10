@@ -11,12 +11,21 @@ const debug = createDebug(
 );
 
 export const getBeaches = async (
-  req: Request,
+  req: Request<
+    Record<string, unknown>,
+    Record<string, unknown>,
+    Record<string, unknown>,
+    { skip: string; limit: string }
+  >,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const beaches = await Beach.find().limit(10).exec();
+    const limit = Number(req.query.limit);
+    const skip = Number(req.query.skip);
+
+    const beaches = await Beach.find().skip(skip).limit(limit).exec();
+
     res.status(200).json({ beaches });
   } catch (error) {
     const customError = responseErrorData.serverError;

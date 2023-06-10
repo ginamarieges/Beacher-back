@@ -12,7 +12,12 @@ beforeEach(() => {
 });
 
 describe("Given a getBeaches controller", () => {
-  const req = {};
+  const req: Partial<Request> = {
+    query: {
+      skip: "10",
+      limit: "20",
+    },
+  };
   const res: Partial<Response> = {
     status: jest.fn().mockReturnThis(),
     json: jest.fn(),
@@ -20,13 +25,25 @@ describe("Given a getBeaches controller", () => {
   const next = jest.fn();
   describe("When it receives a response", () => {
     Beach.find = jest.fn().mockReturnValue({
-      limit: jest.fn().mockReturnThis(),
-      exec: jest.fn().mockResolvedValue(mockBeaches),
+      skip: jest.fn().mockReturnValue({
+        limit: jest.fn().mockReturnValue({
+          exec: jest.fn().mockResolvedValue(mockBeaches),
+        }),
+      }),
     });
     test("Then it should call the method status 200", async () => {
       const expectedStatus = 200;
 
-      await getBeaches(req as Request, res as Response, next as NextFunction);
+      await getBeaches(
+        req as Request<
+          Record<string, unknown>,
+          Record<string, unknown>,
+          Record<string, unknown>,
+          { skip: string; limit: string }
+        >,
+        res as Response,
+        next as NextFunction
+      );
 
       expect(res.status).toHaveBeenCalledWith(expectedStatus);
     });
@@ -34,7 +51,16 @@ describe("Given a getBeaches controller", () => {
     test("Then it should call the method json with a list of two beaches", async () => {
       const expectedBeaches = { beaches: mockBeaches };
 
-      await getBeaches(req as Request, res as Response, next as NextFunction);
+      await getBeaches(
+        req as Request<
+          Record<string, unknown>,
+          Record<string, unknown>,
+          Record<string, unknown>,
+          { skip: string; limit: string }
+        >,
+        res as Response,
+        next as NextFunction
+      );
 
       expect(res.json).toHaveBeenCalledWith(expectedBeaches);
     });
@@ -45,11 +71,23 @@ describe("Given a getBeaches controller", () => {
       const error = responseErrorData.serverError;
 
       Beach.find = jest.fn().mockReturnValue({
-        limit: jest.fn().mockReturnThis(),
-        exec: jest.fn().mockRejectedValue(error),
+        skip: jest.fn().mockReturnValue({
+          limit: jest.fn().mockReturnValue({
+            exec: jest.fn().mockRejectedValue(error),
+          }),
+        }),
       });
 
-      await getBeaches(req as Request, res as Response, next as NextFunction);
+      await getBeaches(
+        req as Request<
+          Record<string, unknown>,
+          Record<string, unknown>,
+          Record<string, unknown>,
+          { skip: string; limit: string }
+        >,
+        res as Response,
+        next as NextFunction
+      );
 
       expect(next).toHaveBeenCalledWith(error);
     });
