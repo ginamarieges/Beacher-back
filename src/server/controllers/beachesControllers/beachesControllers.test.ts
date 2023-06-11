@@ -14,8 +14,7 @@ beforeEach(() => {
 describe("Given a getBeaches controller", () => {
   const req: Partial<Request> = {
     query: {
-      skip: "10",
-      limit: "20",
+      page: "10",
     },
   };
   const res: Partial<Response> = {
@@ -31,6 +30,9 @@ describe("Given a getBeaches controller", () => {
         }),
       }),
     });
+    Beach.where = jest.fn().mockReturnValue({
+      countDocuments: jest.fn().mockResolvedValue(mockBeaches.length),
+    });
     test("Then it should call the method status 200", async () => {
       const expectedStatus = 200;
 
@@ -39,7 +41,7 @@ describe("Given a getBeaches controller", () => {
           Record<string, unknown>,
           Record<string, unknown>,
           Record<string, unknown>,
-          { skip: string; limit: string }
+          { page: string }
         >,
         res as Response,
         next as NextFunction
@@ -49,14 +51,17 @@ describe("Given a getBeaches controller", () => {
     });
 
     test("Then it should call the method json with a list of two beaches", async () => {
-      const expectedBeaches = { beaches: mockBeaches };
+      const expectedBeaches = {
+        beaches: mockBeaches,
+        length: mockBeaches.length,
+      };
 
       await getBeaches(
         req as Request<
           Record<string, unknown>,
           Record<string, unknown>,
           Record<string, unknown>,
-          { skip: string; limit: string }
+          { page: string }
         >,
         res as Response,
         next as NextFunction
@@ -83,7 +88,7 @@ describe("Given a getBeaches controller", () => {
           Record<string, unknown>,
           Record<string, unknown>,
           Record<string, unknown>,
-          { skip: string; limit: string }
+          { page: string }
         >,
         res as Response,
         next as NextFunction

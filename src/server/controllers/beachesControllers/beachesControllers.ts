@@ -15,18 +15,20 @@ export const getBeaches = async (
     Record<string, unknown>,
     Record<string, unknown>,
     Record<string, unknown>,
-    { skip: string; limit: string }
+    { page: string }
   >,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const limit = Number(req.query.limit);
-    const skip = Number(req.query.skip);
+    const pageSize = 5;
+    const skip = (Number(req.query.page) - 1) * pageSize;
 
-    const beaches = await Beach.find().skip(skip).limit(limit).exec();
+    const beaches = await Beach.find().skip(skip).limit(pageSize).exec();
 
-    res.status(200).json({ beaches });
+    const length = await Beach.where({}).countDocuments();
+
+    res.status(200).json({ beaches, length });
   } catch (error) {
     const customError = responseErrorData.serverError;
     debug(error.message);
