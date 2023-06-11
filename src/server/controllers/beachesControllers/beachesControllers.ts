@@ -77,3 +77,24 @@ export const addBeach = async (
     next(error);
   }
 };
+
+export const filterBeaches = async (
+  req: Request<
+    Record<string, unknown>,
+    Record<string, unknown>,
+    Record<string, unknown>,
+    { region: string }
+  >,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { region } = req.query;
+    const beaches = await Beach.find({ region }).exec();
+    res.status(200).json({ beaches });
+  } catch (error) {
+    const customError = responseErrorData.serverError;
+    debug(error.message);
+    next(customError);
+  }
+};

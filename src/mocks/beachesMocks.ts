@@ -18,7 +18,7 @@ export const mockBeaches: BeachDocumentStructure[] = [
     image: "https://example.com/tossa_de_mar.jpg",
     description:
       "Tossa de Mar Beach is a stunning crescent-shaped beach nestled in the town of Tossa de Mar. It is renowned for its medieval castle overlooking the shoreline.",
-    region: "Costa Brava",
+    region: "Maresme",
     town: "Tossa de Mar",
     user: "6470de574da09294395a6eaa",
     _id: new Types.ObjectId(),
