@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const connectToDatabase = async (database: string) => {
-  mongoose.set("debug", true);
+  mongoose.set("debug", false);
   mongoose.set("toJSON", {
     virtuals: true,
     versionKey: false,
