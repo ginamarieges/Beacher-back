@@ -7,6 +7,7 @@ const paths: PathsStructure = {
   beaches: "/beaches",
   delete: "/delete/:id",
   filter: "/filter",
+  getBeach: "/:id",
 };
 
 export default paths;
