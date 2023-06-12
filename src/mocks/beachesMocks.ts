@@ -1,6 +1,9 @@
 import { Types } from "mongoose";
 import { type BeachStructure, type BeachDocumentStructure } from "../types";
-import { getBeachesMock } from "./factories/beachfactories";
+import {
+  getBeachesMock,
+  getResponseBeachMock,
+} from "./factories/beachfactories";
 
 export const mockBeaches: BeachDocumentStructure[] = [
   {
@@ -21,7 +24,7 @@ export const mockBeaches: BeachDocumentStructure[] = [
     region: "Maresme",
     town: "Tossa de Mar",
     user: "6470de574da09294395a6eaa",
-    _id: new Types.ObjectId(),
+    _id: new Types.ObjectId("647c95dd41a0463b7c0461a1"),
   },
   {
     services: {
@@ -44,6 +47,10 @@ export const mockBeaches: BeachDocumentStructure[] = [
 ];
 
 export const mockedBeaches: BeachStructure[] = getBeachesMock(4);
+
+export const beachMock = getResponseBeachMock({
+  id: "647c95dd41a0463b7c0461a1",
+});
 
 export const beaches: BeachDocumentStructure[] = [
   {

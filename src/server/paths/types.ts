@@ -5,4 +5,5 @@ export interface PathsStructure {
   beaches: string;
   delete: string;
   filter: string;
+  getBeach: string;
 }
