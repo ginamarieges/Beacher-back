@@ -97,7 +97,7 @@ export const getBeach = async (
 ) => {
   try {
     const { id } = req.params;
-    const beach = await Beach.find({ _id: id }).exec();
+    const beach = await Beach.findOne({ _id: id }).exec();
 
     if (!beach) {
       throw responseErrorData.beachNotFound;
