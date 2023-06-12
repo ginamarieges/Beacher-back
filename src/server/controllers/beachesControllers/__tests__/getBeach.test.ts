@@ -20,7 +20,7 @@ describe("Given a getBeach controller", () => {
   describe("When it receives a response and the id '647c95dd41a0463b7c0461a1'", () => {
     const expectedBeach = { beach: [beachMock] };
 
-    Beach.find = jest.fn().mockReturnValue({
+    Beach.findOne = jest.fn().mockReturnValue({
       exec: jest.fn().mockResolvedValue([beachMock]),
     });
     test("Then it should call the method json with the beach with the id '647c95dd41a0463b7c0461a1'", async () => {
@@ -50,7 +50,7 @@ describe("Given a getBeach controller", () => {
     test("Then it should call the next function with the error 'Beach not found'", async () => {
       const error = responseErrorData.beachNotFound;
 
-      Beach.find = jest.fn().mockReturnValue({
+      Beach.findOne = jest.fn().mockReturnValue({
         exec: jest.fn().mockResolvedValue(null),
       });
 
