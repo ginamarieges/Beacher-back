@@ -89,3 +89,22 @@ export const addBeach = async (
     next(error);
   }
 };
+
+export const getBeach = async (
+  req: Request<{ id: string }>,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { id } = req.params;
+    const beach = await Beach.find({ _id: id }).exec();
+
+    if (!beach) {
+      throw responseErrorData.beachNotFound;
+    }
+
+    res.status(200).json({ beach });
+  } catch (error: unknown) {
+    next(error);
+  }
+};
