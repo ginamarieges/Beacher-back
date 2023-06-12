@@ -15,18 +15,30 @@ export const getBeaches = async (
     Record<string, unknown>,
     Record<string, unknown>,
     Record<string, unknown>,
-    { page: string }
+    { page: string; region: string }
   >,
   res: Response,
   next: NextFunction
 ) => {
   try {
+    const { region } = req.query;
+
+    let beachFilter = {};
+
+    if (region) {
+      beachFilter = { region };
+    }
+
     const pageSize = 5;
     const skip = (Number(req.query.page) - 1) * pageSize;
 
-    const beaches = await Beach.find().skip(skip).limit(pageSize).exec();
+    const beaches = await Beach.find(beachFilter)
+      .sort({ _id: -1 })
+      .skip(skip)
+      .limit(pageSize)
+      .exec();
 
-    const length = await Beach.where({}).countDocuments();
+    const length = await Beach.where(beachFilter).countDocuments();
 
     res.status(200).json({ beaches, length });
   } catch (error) {
@@ -75,26 +87,5 @@ export const addBeach = async (
     res.status(201).json({ newBeach });
   } catch (error: unknown) {
     next(error);
-  }
-};
-
-export const filterBeaches = async (
-  req: Request<
-    Record<string, unknown>,
-    Record<string, unknown>,
-    Record<string, unknown>,
-    { region: string }
-  >,
-  res: Response,
-  next: NextFunction
-) => {
-  try {
-    const { region } = req.query;
-    const beaches = await Beach.find({ region }).exec();
-    res.status(200).json({ beaches });
-  } catch (error) {
-    const customError = responseErrorData.serverError;
-    debug(error.message);
-    next(customError);
   }
 };

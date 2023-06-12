@@ -15,6 +15,7 @@ describe("Given a getBeaches controller", () => {
   const req: Partial<Request> = {
     query: {
       page: "10",
+      region: "Maresme",
     },
   };
   const res: Partial<Response> = {
@@ -24,9 +25,11 @@ describe("Given a getBeaches controller", () => {
   const next = jest.fn();
   describe("When it receives a response", () => {
     Beach.find = jest.fn().mockReturnValue({
-      skip: jest.fn().mockReturnValue({
-        limit: jest.fn().mockReturnValue({
-          exec: jest.fn().mockResolvedValue(mockBeaches),
+      sort: jest.fn().mockReturnValue({
+        skip: jest.fn().mockReturnValue({
+          limit: jest.fn().mockReturnValue({
+            exec: jest.fn().mockResolvedValue(mockBeaches),
+          }),
         }),
       }),
     });
@@ -41,7 +44,7 @@ describe("Given a getBeaches controller", () => {
           Record<string, unknown>,
           Record<string, unknown>,
           Record<string, unknown>,
-          { page: string }
+          { page: string; region: string }
         >,
         res as Response,
         next as NextFunction
@@ -61,7 +64,7 @@ describe("Given a getBeaches controller", () => {
           Record<string, unknown>,
           Record<string, unknown>,
           Record<string, unknown>,
-          { page: string }
+          { page: string; region: string }
         >,
         res as Response,
         next as NextFunction
@@ -76,9 +79,11 @@ describe("Given a getBeaches controller", () => {
       const error = responseErrorData.serverError;
 
       Beach.find = jest.fn().mockReturnValue({
-        skip: jest.fn().mockReturnValue({
-          limit: jest.fn().mockReturnValue({
-            exec: jest.fn().mockRejectedValue(error),
+        sort: jest.fn().mockReturnValue({
+          skip: jest.fn().mockReturnValue({
+            limit: jest.fn().mockReturnValue({
+              exec: jest.fn().mockRejectedValue(error),
+            }),
           }),
         }),
       });
@@ -88,7 +93,7 @@ describe("Given a getBeaches controller", () => {
           Record<string, unknown>,
           Record<string, unknown>,
           Record<string, unknown>,
-          { page: string }
+          { page: string; region: string }
         >,
         res as Response,
         next as NextFunction
