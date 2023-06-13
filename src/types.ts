@@ -17,7 +17,7 @@ export type UserCredentialsRequest = Request<
   UserCredentials
 >;
 
-export interface BeachStateStructure {
+export interface BeachDataStructure {
   name: string;
   image: string;
   description: string;
@@ -36,10 +36,10 @@ export interface BeachStateStructure {
   user?: string;
 }
 
-export interface BeachStructure extends BeachStateStructure {
+export interface BeachStructure extends BeachDataStructure {
   id?: string;
 }
-export interface BeachDocumentStructure extends BeachStateStructure {
+export interface BeachDocumentStructure extends BeachDataStructure {
   _id: Types.ObjectId;
 }
 
@@ -54,6 +54,6 @@ export interface AuthRequest<
 }
 
 export interface CustomRequest extends Request {
-  body: BeachStateStructure;
+  body: BeachDataStructure;
   userId: string;
 }
