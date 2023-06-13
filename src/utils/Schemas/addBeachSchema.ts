@@ -1,8 +1,8 @@
 import { Joi } from "express-validation";
-import { type BeachStateStructure } from "../../types";
+import { type BeachDataStructure } from "../../types";
 
 const addBeachSchema = {
-  body: Joi.object<BeachStateStructure>({
+  body: Joi.object<BeachDataStructure>({
     name: Joi.string().required(),
     image: Joi.string().required(),
     description: Joi.string().allow(""),
