@@ -38,7 +38,7 @@ export const getBeaches = async (
       .limit(pageSize)
       .exec();
 
-    const length = await Beach.where(beachFilter).countDocuments();
+    const length = await Beach.where(beachFilter).countDocuments().exec();
 
     res.status(200).json({ beaches, length });
   } catch (error) {
