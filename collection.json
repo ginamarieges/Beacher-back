@@ -81,6 +81,90 @@
         }
       },
       "response": []
+    },
+    {
+      "name": "/delete/:id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmOTgxYTAwNTZhOTNiNDA4YzUwNTAiLCJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2ODYwNjM0MjAsImV4cCI6MTY5Mjk3NTQyMH0.HffZInfvH8D35jY6x34c7dkyVgwbUb2ifB8Bbm-SGtw",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/beaches/delete/647c95dd41a0463b7c04619e",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["beaches", "delete", "647c95dd41a0463b7c04619e"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/beaches/",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmOTgxYTAwNTZhOTNiNDA4YzUwNTAiLCJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2ODYyMjk2NzgsImV4cCI6MTY5MzE0MTY3OH0.xjiqIn7KawgKbZ_zt8H2X7OL_mR3XwmkNENPmjWcB-Q",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Platja de proba\",\n    \"image\": \"https://cdn.discordapp.com/attachments/1100447017337094238/1115610875492048896/barceloneta.webp\",\n    \"region\": \"Barcelona\",\n    \"town\": \"Barcelona\",\n    \"description\": \"A popular urban beach in Barcelona with a vibrant atmosphere.\",\n    \"services\": {\n      \"baywatch\": true,\n      \"umbrellas\": false,\n      \"dogs_allowed\": false,\n      \"showers\": true,\n      \"restaurant\": true,\n      \"familyBeach\": false,\n      \"secretBeach\": false\n    },\n    \"addServices\": \"Beach volleyball courts available.\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:4000/beaches/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["beaches", ""]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/:id",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2NDZmOTgxYTAwNTZhOTNiNDA4YzUwNTAiLCJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2ODY3MzA4NjIsImV4cCI6MTY5MzY0Mjg2Mn0.y0uQF7ca8fd1QEIq3ApCgNw5rk5RUjX4wYCt9ReiOz0",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:4000/beaches/64874d6ffa8ea2d9c2998c33",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "4000",
+          "path": ["beaches", "64874d6ffa8ea2d9c2998c33"]
+        }
+      },
+      "response": []
     }
   ]
 }
