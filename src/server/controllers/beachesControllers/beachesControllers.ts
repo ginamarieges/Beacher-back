@@ -3,7 +3,10 @@ import createDebug from "debug";
 import { type NextFunction, type Request, type Response } from "express";
 import Beach from "../../../database/models/Beach.js";
 import { responseErrorData } from "../../../utils/responseData/responseData.js";
-import { type CustomRequest } from "../../../types.js";
+import {
+  type CustomUpdateRequest,
+  type CustomRequest,
+} from "../../../types.js";
 import { Types } from "mongoose";
 
 const debug = createDebug(
@@ -105,6 +108,32 @@ export const getBeach = async (
 
     res.status(200).json({ beach });
   } catch (error: unknown) {
+    next(error);
+  }
+};
+
+export const updateBeach = async (
+  req: CustomUpdateRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { userId, body } = req;
+
+    const newBeach = await Beach.findByIdAndUpdate(body.id, {
+      ...body,
+      _id: new Types.ObjectId(body.id),
+      user: new Types.ObjectId(userId),
+    }).exec();
+
+    if (!newBeach) {
+      const customError = responseErrorData.beachNotFound;
+      throw customError;
+    }
+
+    res.status(200).json({ newBeach });
+  } catch (error) {
+    debug((error as Error).message);
     next(error);
   }
 };

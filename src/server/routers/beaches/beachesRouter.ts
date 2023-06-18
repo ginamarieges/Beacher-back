@@ -4,6 +4,7 @@ import {
   deleteBeach,
   getBeach,
   getBeaches,
+  updateBeach,
 } from "../../controllers/beachesControllers/beachesControllers.js";
 import paths from "../../paths/paths.js";
 import { validate } from "express-validation";
@@ -22,5 +23,7 @@ beachesRouter.post(
   validate(addBeachSchema, {}, { abortEarly: false }),
   addBeach
 );
+
+beachesRouter.put("/", updateBeach);
 
 export default beachesRouter;

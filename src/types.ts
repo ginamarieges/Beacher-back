@@ -57,3 +57,8 @@ export interface CustomRequest extends Request {
   body: BeachDataStructure;
   userId: string;
 }
+
+export interface CustomUpdateRequest extends Request {
+  body: BeachStructure;
+  userId: string;
+}
