@@ -120,18 +120,22 @@ export const updateBeach = async (
   try {
     const { userId, body } = req;
 
-    const newBeach = await Beach.findByIdAndUpdate(body.id, {
-      ...body,
-      _id: new Types.ObjectId(body.id),
-      user: new Types.ObjectId(userId),
-    }).exec();
+    const newBeach = await Beach.findByIdAndUpdate(
+      body.id,
+      {
+        ...body,
+        _id: new Types.ObjectId(body.id),
+        user: new Types.ObjectId(userId),
+      },
+      { returnDocument: "after" }
+    ).exec();
 
     if (!newBeach) {
       const customError = responseErrorData.beachNotFound;
       throw customError;
     }
 
-    res.status(200).json({ newBeach });
+    res.status(200).json({ message: "Beach updated" });
   } catch (error) {
     debug((error as Error).message);
     next(error);
