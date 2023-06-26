@@ -20,7 +20,7 @@ const beachesFactory = Factory.define<BeachStructure>(() => ({
   },
   user: new Types.ObjectId().toString(),
   addServices: faker.word.adjective(),
-  id: faker.string.alphanumeric(),
+  id: new Types.ObjectId().toString(),
 }));
 
 export const getBeachesMock = (number: number) =>
