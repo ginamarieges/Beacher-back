@@ -23,7 +23,7 @@ export const mockBeaches: BeachDocumentStructure[] = [
       "Tossa de Mar Beach is a stunning crescent-shaped beach nestled in the town of Tossa de Mar. It is renowned for its medieval castle overlooking the shoreline.",
     region: "Maresme",
     town: "Tossa de Mar",
-    user: "6470de574da09294395a6eaa",
+    user: new Types.ObjectId("6470de574da09294395a6eaa").toString(),
     _id: new Types.ObjectId("647c95dd41a0463b7c0461a1"),
   },
   {
@@ -41,7 +41,7 @@ export const mockBeaches: BeachDocumentStructure[] = [
     description: "Playa inventada.",
     region: "Costa Brava",
     town: "Tossa de Mar",
-    user: "w847y5ern93oxmdsgkigfdfghjh",
+    user: new Types.ObjectId("647c95dd41a0463b7c0461a1").toString(),
     _id: new Types.ObjectId(),
   },
 ];
