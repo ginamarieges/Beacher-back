@@ -43,8 +43,10 @@
     "@types/cors": "^2.8.13",
     "@types/debug": "^4.1.8",
     "@types/jsonwebtoken": "^9.0.2",
+    "@types/multer": "^1.4.7",
     "@types/supertest": "^2.0.12",
     "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
     "chalk": "^4.1.2",
     "cors": "^2.8.5",
     "debug": "^4.3.4",
@@ -57,6 +59,7 @@
     "mongodb-memory-server": "^8.12.2",
     "mongoose": "^7.2.1",
     "morgan": "^1.10.0",
+    "multer": "^1.4.5-lts.1",
     "prettier": "^2.8.8",
     "supertest": "^6.3.3"
   }

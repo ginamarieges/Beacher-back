@@ -11,6 +11,7 @@ import paths from "../paths/paths.js";
 import userRouter from "../routers/users/userRouter.js";
 import auth from "../middlewares/authMiddleware/authMiddleware.js";
 import beachesRouter from "../routers/beaches/beachesRouter.js";
+import bodyParser from "body-parser";
 
 export const app = express();
 
@@ -25,6 +26,7 @@ const options: cors.CorsOptions = {
 
 app.use(cors(options));
 
+app.use(bodyParser.json({ limit: "500kb" }));
 app.use(express.json());
 
 app.use(morgan("dev"));
