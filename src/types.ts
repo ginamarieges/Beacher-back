@@ -7,6 +7,12 @@ export interface UserCredentials {
   password: string;
 }
 
+export interface UserInformation extends UserCredentials {
+  name: string;
+  surname: string;
+  email: string;
+}
+
 export interface UserData extends UserCredentials {
   _id: string;
 }
@@ -15,6 +21,12 @@ export type UserCredentialsRequest = Request<
   Record<string, unknown>,
   Record<string, unknown>,
   UserCredentials
+>;
+
+export type RegisterUserRequest = Request<
+  Record<string, unknown>,
+  Record<string, unknown>,
+  UserInformation
 >;
 
 export interface BeachDataStructure {

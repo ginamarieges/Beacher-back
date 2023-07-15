@@ -2,9 +2,34 @@ import "../../../loadEnvironment.js";
 import { type NextFunction, type Response } from "express";
 import bcrypt from "bcryptjs";
 import jwt, { type JwtPayload } from "jsonwebtoken";
-import { type UserCredentialsRequest } from "../../../types";
+import {
+  type RegisterUserRequest,
+  type UserCredentialsRequest,
+} from "../../../types";
 import User from "../../../database/models/User.js";
 import { responseErrorData } from "../../../utils/responseData/responseData.js";
+
+export const registerUser = async (
+  req: RegisterUserRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  const { email, name, password, surname, username } = req.body;
+
+  try {
+    const newUser = await User.create({
+      email,
+      name,
+      surname,
+      username,
+      password: bcrypt.hash(password, 10),
+    });
+
+    res.status(201).json({ newUser });
+  } catch (error: unknown) {
+    next(error);
+  }
+};
 
 export const loginUser = async (
   req: UserCredentialsRequest,
