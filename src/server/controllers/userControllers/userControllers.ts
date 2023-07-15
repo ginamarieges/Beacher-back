@@ -25,6 +25,10 @@ export const registerUser = async (
       password: bcrypt.hash(password, 10),
     });
 
+    if (!newUser) {
+      throw responseErrorData.errorRegisterUser;
+    }
+
     res.status(201).json({ newUser });
   } catch (error: unknown) {
     next(error);

@@ -8,4 +8,5 @@ export interface ErrorStructure {
   invalidToken: CustomError;
   beachNotFound: CustomError;
   errorAddBeach: CustomError;
+  errorRegisterUser: CustomError;
 }
