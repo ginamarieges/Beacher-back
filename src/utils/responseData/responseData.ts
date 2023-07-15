@@ -9,4 +9,5 @@ export const responseErrorData: ErrorStructure = {
   invalidToken: new CustomError("Invalid token", 401),
   beachNotFound: new CustomError("Beach not found", 404),
   errorAddBeach: new CustomError("Error adding your beach", 400),
+  errorRegisterUser: new CustomError("Error in the register", 404),
 };

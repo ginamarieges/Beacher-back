@@ -4,6 +4,7 @@ const paths: PathsStructure = {
   root: "/",
   user: "/user",
   login: "/login",
+  register: "/register",
   beaches: "/beaches",
   delete: "/delete/:id",
   filter: "/filter",

@@ -5,11 +5,14 @@ import {
   type UserData,
   type UserCredentials,
   type UserCredentialsRequest,
+  type UserInformation,
+  type RegisterUserRequest,
 } from "../../../types";
-import { loginUser } from "./userControllers";
+import { loginUser, registerUser } from "./userControllers";
 import { Types } from "mongoose";
 import User from "../../../database/models/User";
 import { responseErrorData } from "../../../utils/responseData/responseData";
+import CustomError from "../../../CustomError/CustomError";
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -75,6 +78,78 @@ describe("Given a loginUser controller", () => {
 
       await loginUser(
         req as UserCredentialsRequest,
+        res as Response,
+        next as NextFunction
+      );
+
+      expect(next).toHaveBeenCalledWith(expectedError);
+    });
+  });
+});
+
+describe("Given a registerUser controller", () => {
+  const userData: UserInformation = {
+    email: "fina@gmail.com",
+    name: "Juana",
+    password: "dinamo",
+    surname: "Perla",
+    username: "juanita",
+  };
+
+  const req: Partial<RegisterUserRequest> = {
+    body: userData,
+  };
+
+  const res: Partial<Response> = {
+    status: jest.fn().mockReturnThis(),
+    json: jest.fn(),
+  };
+
+  const next = jest.fn();
+
+  const userAdded: UserInformation = {
+    email: "fina@gmail.com",
+    name: "Juana",
+    password: "$2y$10$KiiI6RQjNehTOHoA3I3F2elAqCtIvOwwTULTN.KWCgz8pH.ppTIVK",
+    surname: "Perla",
+    username: "juanita",
+  };
+  describe("When it receives a request with valid user data", () => {
+    test("Then it should call the status method with the code 201", async () => {
+      const expectedStatus = 201;
+
+      User.create = jest.fn().mockResolvedValue(userAdded);
+
+      await registerUser(
+        req as RegisterUserRequest,
+        res as Response,
+        next as NextFunction
+      );
+
+      expect(res.status).toHaveBeenCalledWith(expectedStatus);
+    });
+
+    test("Then it should call the json method with the juanita user added", async () => {
+      User.create = jest.fn().mockResolvedValue(userAdded);
+
+      await registerUser(
+        req as RegisterUserRequest,
+        res as Response,
+        next as NextFunction
+      );
+
+      expect(res.json).toHaveBeenCalledWith({ newUser: userAdded });
+    });
+  });
+
+  describe("When it receives an invalid user data", () => {
+    test("Then it should call the method next with the error 'Error in the register'", async () => {
+      const expectedError = new CustomError("Error in the register", 404);
+
+      User.create = jest.fn().mockResolvedValue(null);
+
+      await registerUser(
+        req as RegisterUserRequest,
         res as Response,
         next as NextFunction
       );
