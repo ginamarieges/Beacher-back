@@ -22,7 +22,7 @@ export const registerUser = async (
       name,
       surname,
       username,
-      password: bcrypt.hash(password, 10),
+      password: await bcrypt.hash(password, 10),
     });
 
     if (!newUser) {

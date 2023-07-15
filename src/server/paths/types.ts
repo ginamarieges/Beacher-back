@@ -6,4 +6,5 @@ export interface PathsStructure {
   delete: string;
   filter: string;
   getBeach: string;
+  register: string;
 }
