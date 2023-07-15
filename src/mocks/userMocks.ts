@@ -1,8 +1,11 @@
-import { type UserCredentials } from "../types";
+import { type UserInformation, type UserCredentials } from "../types";
 
-export const mockedUserHashed: UserCredentials = {
+export const mockedUserHashed: UserInformation = {
   username: "admin",
   password: "$2y$10$HMdnP7P4uOO4uPQPXW8lF.dJKyjBvOsXu.r9QQb5nWB9xD/d5o/p.",
+  email: "fact@gmail.com",
+  name: "admin",
+  surname: "ser",
 };
 
 export const tokenMock =
